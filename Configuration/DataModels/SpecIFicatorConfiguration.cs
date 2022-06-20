@@ -2,5 +2,8 @@
 {
     public class SpecIFicatorConfiguration
     {
+        public string ProjectBrowserType { get; set; }
+
+        public string HierarchyEditorType { get; set; }
     }
 }

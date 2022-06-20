@@ -4,8 +4,9 @@ namespace SpecIFicator.Framework.Contracts
 {
     public interface ISpecIfDataConnector
     {
-        public string Title { get; }
+        static string Title { get; }
 
-        public ISpecIfDataProviderFactory SpecIfDataProviderFactory { get; }
+        //ISpecIfDataProviderFactory SpecIfDataProviderFactory { get; }
+
     }
 }
