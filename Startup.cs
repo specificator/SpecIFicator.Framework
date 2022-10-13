@@ -1,6 +1,8 @@
 ﻿using MDD4All.SpecIF.DataProvider.Contracts;
 using MDD4All.SpecIF.DataProvider.Contracts.DataStreams;
 using MDD4All.SpecIF.DataProvider.MockupDataStream;
+using SpecIFicator.Framework.Configuration;
+using SpecIFicator.Framework.PluginManagement;
 using System.Globalization;
 
 namespace SpecIFicator.Framework
@@ -92,6 +94,10 @@ namespace SpecIFicator.Framework
             });
 
             app.UseRequestLocalization();
+
+            // SpecIFicator framework initialization
+            DynamicConfigurationManager.LoadConfiguration();
+            PluginManager.LoadPlugins();
         }
     }
 }

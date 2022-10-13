@@ -1,9 +1,11 @@
-﻿namespace SpecIFicator.Framework.Configuration.DataModels
+﻿using Newtonsoft.Json;
+
+namespace SpecIFicator.Framework.Configuration.DataModels
 {
     public class SpecIFicatorConfiguration
     {
-        public string ProjectBrowserType { get; set; }
 
-        public string HierarchyEditorType { get; set; }
+        [JsonProperty("components")]
+        public List<ComponentDefinition> Components { get; set; } = new List<ComponentDefinition>();
     }
 }

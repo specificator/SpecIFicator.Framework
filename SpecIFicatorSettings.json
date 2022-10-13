@@ -1,0 +1,72 @@
+{
+    "appliesTo": "SpecIFicator.Framework",
+    "components": [
+        {
+            "title": "HierarchyEditor",
+            "default": "SpecIFicator.DefaultPlugin.BlazorComponents.HierarchyEditor",
+            "specificTypes": [
+                {
+                    "key": {
+                        "id": "ABC",
+                        "revision": "1"
+                    },
+                    "typeName": "ThirdParty.Plugin.HierarchyEditor"
+                }
+            ],
+            "configurations": [
+                {
+                    "appliesTo": "SpecIFicator.DefaultPlugin.BlazorComponents.HierarchyEditor",
+                    "components": [
+                        {
+                            "title": "Tree",
+                            "default": "SpecIFicator.DefaultPlugin.BlazorComponents.HierarchyTree",
+                            "configurations": [
+
+                            ]
+                        },
+                        {
+                            "title": "HierarchyView",
+                            "default": "SpecIFicator.DefaultPlugin.BlazorComponents.HierarchyView",
+                            "configurations": [
+                                {
+                                    "appliesTo": "SpecIFicator.DefaultPlugin.BlazorComponents.HierarchyView",
+                                    "components": [
+                                        {
+                                            "tite": "DocumentView",
+                                            "default": "",
+                                            "configurations": [
+                                                {
+                                                    "appliesTo": ""
+                                                }
+
+                                            ]
+                                        },
+                                        {
+                                            "title": "ResourceView",
+                                            "default": ""
+                                        },
+                                        {
+                                            "title": "RawView",
+                                            "default": ""
+                                        }
+                                    ]
+
+
+
+                                }
+
+                            ]
+
+                        }
+                    ]
+
+                }
+
+
+
+            ]
+
+
+        }
+    ]
+}

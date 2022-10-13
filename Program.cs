@@ -6,7 +6,7 @@ namespace SpecIFicator.Framework
     {
         public static void Main(string[] args)
         {
-            PluginManager.LoadPlugins();
+            
 
             CreateHostBuilder(args).Build().Run();
         }

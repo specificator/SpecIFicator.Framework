@@ -14,10 +14,18 @@ using Microsoft.JSInterop;
 using SpecIFicator.Framework;
 using SpecIFicator.Framework.Shared;
 using Microsoft.Extensions.Localization;
+using SpecIFicator.Framework.PluginManagement;
 
 namespace SpecIFicator.Framework.Pages
 {
     public partial class ProjectsBrowserPage
     {
+        private Type _projectBrowserType { get; set; }
+
+        protected override void OnInitialized()
+        {
+            Type type = PluginManager.GetType("SpecIFicator.DefaultPlugin.BlazorComponents.ProjectsBrowser");
+            _projectBrowserType = type;
+        }
     }
 }

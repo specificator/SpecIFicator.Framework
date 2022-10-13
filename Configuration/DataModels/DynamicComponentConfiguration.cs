@@ -1,9 +1,15 @@
-﻿namespace SpecIFicator.Framework.Configuration.DataModels
-{
-    public abstract class DynamicComponentConfiguration
-    {
-        public string DefaultType { get; set; }
+﻿using MDD4All.SpecIF.DataModels;
+using Newtonsoft.Json;
 
-        public Dictionary<string, string> SpecificTypes { get; set; } = new Dictionary<string, string>();
+namespace SpecIFicator.Framework.Configuration.DataModels
+{
+    public class DynamicComponentConfiguration
+    {
+        [JsonProperty("appliesTo")]
+        public string AppliesTo { get; set; }
+
+
+        [JsonProperty("components")]
+        public List<ComponentDefinition> Components { get; set; }
     }
 }

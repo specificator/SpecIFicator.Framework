@@ -92,6 +92,26 @@ namespace SpecIFicator.Framework.PluginManagement
             //}
         }
 
-        
+        public static Type GetType(string typeName)
+        {
+            Type result = null;
+
+            foreach (KeyValuePair<PluginManifest, List<Assembly>> plugin in _pluginCache)
+            {
+                foreach (Assembly assembly in plugin.Value)
+                {
+                    foreach (Type type in assembly.GetTypes())
+                    {
+                        if (type.FullName == typeName)
+                        {
+
+                            result = type;
+                        }
+                    }
+                }
+            }
+
+            return result;
+        }
     }
 }

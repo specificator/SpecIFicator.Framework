@@ -1,6 +1,12 @@
 ﻿@page "/projects"
-@using SpecIFicator.UI.BlazorComponents
 <div class="p-3">
-    <ProjectsBrowser></ProjectsBrowser>
+    @if(_projectBrowserType == null)
+    {
+        <h2>Project browser component not available!</h2>
+    }
+    else
+    {
+    <DynamicComponent Type="@_projectBrowserType"></DynamicComponent>
+    }
 </div>
 

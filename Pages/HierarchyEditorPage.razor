@@ -1,0 +1,12 @@
+﻿@page "/hierarchy/{keyString}"
+
+@if (_hierarchyEditorType != null)
+{
+    <CascadingValue Value="@_dataContext">
+        <DynamicComponent Type="@_hierarchyEditorType"></DynamicComponent>
+    </CascadingValue>
+}
+else
+{
+    <h1>No matching hierarchy editor found!</h1>
+}
