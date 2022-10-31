@@ -1,5 +1,4 @@
-﻿using MDD4All.SpecIF.DataModels;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 
 namespace SpecIFicator.Framework.Configuration.DataModels
 {

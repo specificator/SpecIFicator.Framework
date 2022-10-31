@@ -70,3 +70,24 @@ a, .btn-link {
     .blazor-error-boundary::after {
         content: "An error has occurred."
     }
+
+
+.uic-tree .uic-tree {
+    margin-left: 1.25rem;
+}
+
+.uic-tree--hidden {
+    display: none;
+}
+
+.uic-tree__icon {
+    float: left;
+}
+
+.uic-tree__title {
+    margin-left: 1.25rem;
+}
+
+.uic-tree--cursor-pointer {
+    cursor: pointer;
+}

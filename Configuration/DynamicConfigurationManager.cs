@@ -15,36 +15,49 @@ namespace SpecIFicator.Framework.Configuration
             string json = System.IO.File.ReadAllText("SpecIFicatorSettings.json");
 
             DynamicComponentConfiguration specIFicatorConfiguration = JsonConvert.DeserializeObject<DynamicComponentConfiguration>(json);
-            if(specIFicatorConfiguration != null)
+            if (specIFicatorConfiguration != null)
             {
                 _specIFicatorConfiguration = specIFicatorConfiguration;
             }
         }
 
-        public static Type GetHierarchyEditorType(Key rootResourceClassKey)
+
+        public static Type GetComponentType(string title, string appliesTo, Key classKey)
         {
             Type result = null;
 
             string typeName = "";
 
-            if (_specIFicatorConfiguration != null)
-            {
-                ComponentDefinition componentDefinition = _specIFicatorConfiguration.Components.First(cd => cd.Title == "HierarchyEditor");
+            ComponentDefinition componentDefinition = FindComponentDefinitionRecursively(_specIFicatorConfiguration,
+                                                                                         title,
+                                                                                         appliesTo);
 
-                if (componentDefinition != null)
+            if(componentDefinition != null)
+            {
+                foreach (SpecificTypeConfiguration specificType in componentDefinition.SpecificTypes)
                 {
-                    foreach (SpecificTypeConfiguration specificType in componentDefinition.SpecificTypes)
+                    if (specificType.Key.ID == classKey.ID)
+
+                        
                     {
-                        if (specificType.Key.ID == rootResourceClassKey.ID &&
-                            specificType.Key.Revision == rootResourceClassKey.Revision)
+                        if (string.IsNullOrEmpty(specificType.Key.Revision))
                         {
                             typeName = specificType.TypeName;
+                            break;
+                        }
+                        else
+                        {
+                            if(specificType.Key.Revision == classKey.Revision)
+                            {
+                                typeName = specificType.TypeName;
+                                break;
+                            }
                         }
                     }
-                    if (typeName == "")
-                    {
-                        typeName = componentDefinition.DefaultType;
-                    }
+                }
+                if (typeName == "")
+                {
+                    typeName = componentDefinition.DefaultType;
                 }
                 
             }
@@ -56,5 +69,82 @@ namespace SpecIFicator.Framework.Configuration
 
             return result;
         }
+
+        
+
+        private static ComponentDefinition FindComponentDefinitionRecursively(DynamicComponentConfiguration currentNode,                              
+                                                                                           string title,
+                                                                                           string appliesTo)
+        {
+            ComponentDefinition result = null;
+
+            if(currentNode.AppliesTo == appliesTo)
+            {
+                foreach (ComponentDefinition componentDefinition in currentNode.Components)
+                {
+                    if(componentDefinition.Title == title)
+                    {
+                        result = componentDefinition;
+                        break;
+                    }
+                }
+            }
+            else
+            {
+                foreach(ComponentDefinition componentDefinition in currentNode.Components)
+                {
+                    foreach(DynamicComponentConfiguration childConfigration in componentDefinition.Configurations)
+                    {
+                        result = FindComponentDefinitionRecursively(childConfigration, title, appliesTo);
+                        if(result != null)
+                        {
+                            break;
+                        }
+                    }
+                    if (result != null)
+                    {
+                        break;
+                    }
+                }
+            }
+
+            return result;
+        }
+
+        //public static Type GetHierarchyEditorType(Key rootResourceClassKey)
+        //{
+        //    Type result = null;
+
+        //    string typeName = "";
+
+        //    if (_specIFicatorConfiguration != null)
+        //    {
+        //        ComponentDefinition componentDefinition = _specIFicatorConfiguration.Components.First(cd => cd.Title == "HierarchyEditor");
+
+        //        if (componentDefinition != null)
+        //        {
+        //            foreach (SpecificTypeConfiguration specificType in componentDefinition.SpecificTypes)
+        //            {
+        //                if (specificType.Key.ID == rootResourceClassKey.ID &&
+        //                    specificType.Key.Revision == rootResourceClassKey.Revision)
+        //                {
+        //                    typeName = specificType.TypeName;
+        //                }
+        //            }
+        //            if (typeName == "")
+        //            {
+        //                typeName = componentDefinition.DefaultType;
+        //            }
+        //        }
+
+        //    }
+
+        //    if (!string.IsNullOrEmpty(typeName))
+        //    {
+        //        result = PluginManager.GetType(typeName);
+        //    }
+
+        //    return result;
+        //}
     }
 }

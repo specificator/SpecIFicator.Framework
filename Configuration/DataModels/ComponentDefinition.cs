@@ -14,6 +14,6 @@ namespace SpecIFicator.Framework.Configuration.DataModels
         public List<SpecificTypeConfiguration> SpecificTypes { get; set; } = new List<SpecificTypeConfiguration>();
 
         [JsonProperty("configurations")]
-        List<DynamicComponentConfiguration> Configurations { get; set; }
+        public List<DynamicComponentConfiguration> Configurations { get; set; }
     }
 }

@@ -1,5 +1,5 @@
 {
-    "appliesTo": "SpecIFicator.Framework",
+    "appliesTo": "SpecIFicator",
     "components": [
         {
             "title": "HierarchyEditor",
@@ -32,11 +32,41 @@
                                     "appliesTo": "SpecIFicator.DefaultPlugin.BlazorComponents.HierarchyView",
                                     "components": [
                                         {
-                                            "tite": "DocumentView",
-                                            "default": "",
+                                            "title": "DocumentView",
+                                            "default": "SpecIFicator.DefaultPlugin.BlazorComponents.Document.DocumentView",
                                             "configurations": [
                                                 {
-                                                    "appliesTo": ""
+                                                    "appliesTo": "SpecIFicator.DefaultPlugin.BlazorComponents.Document.DocumentView",
+                                                    "components": [
+                                                        {
+                                                            "title": "DocumentItem",
+                                                            "default": "SpecIFicator.DefaultPlugin.BlazorComponents.Document.Items.DefaultDocumentItem",
+                                                            "specificTypes": [
+                                                                {
+                                                                    "key": {
+                                                                        "id": "RC-Folder"
+                                                                    },
+                                                                    "typeName": "SpecIFicator.DefaultPlugin.BlazorComponents.Document.Items.HeadingDocumentItem"
+                                                                },
+                                                                {
+                                                                    "key": {
+                                                                        "id": "RC-Requirement"
+                                                                    },
+                                                                    "typeName": "SpecIFicator.DefaultPlugin.BlazorComponents.Document.Items.RequirementDocumentItem"
+                                                                },
+                                                                {
+                                                                    "key": {
+                                                                        "id": "RC-Paragraph"
+                                                                    },
+                                                                    "typeName": "SpecIFicator.DefaultPlugin.BlazorComponents.Document.Items.ParagraphDocumentItem"
+                                                                }
+                                                            ],
+                                                            "configurations": [
+
+                                                            ]
+                                                        }
+                                                    ]
+
                                                 }
 
                                             ]
