@@ -1,5 +1,4 @@
 ﻿using Newtonsoft.Json;
-using SpecIFicator.Framework.Contracts;
 using SpecIFicator.Framework.PluginManagement.DataModels;
 using System.Diagnostics;
 using System.Reflection;
@@ -11,13 +10,13 @@ namespace SpecIFicator.Framework.PluginManagement
 
         private static Dictionary<PluginManifest, List<Assembly>> _pluginCache = new Dictionary<PluginManifest, List<Assembly>>();
 
-        public static void LoadPlugins(string basePath= @"d:\work\github\SpecIFicator.Framework\src\plugins\")
+        public static void LoadPlugins(string basePath = @"d:\work\github\SpecIFicator.Framework\src\plugins\")
         {
             _pluginCache.Clear();
 
             DirectoryInfo baseDirectoryInfo = new DirectoryInfo(basePath);
 
-            foreach(DirectoryInfo pluginDirectory in baseDirectoryInfo.GetDirectories())
+            foreach (DirectoryInfo pluginDirectory in baseDirectoryInfo.GetDirectories())
             {
                 string pluginManifestPath = pluginDirectory.FullName + "/SpecIFicatorPlugin.json";
 
@@ -27,11 +26,11 @@ namespace SpecIFicator.Framework.PluginManagement
 
                     PluginManifest pluginManifest = JsonConvert.DeserializeObject<PluginManifest>(json);
 
-                    if(pluginManifest != null)
+                    if (pluginManifest != null)
                     {
                         List<Assembly> assemblies = new List<Assembly>();
 
-                        foreach(string assemblyName in pluginManifest.Assemblies)
+                        foreach (string assemblyName in pluginManifest.Assemblies)
                         {
                             string assemblyPath = Path.Combine(pluginDirectory.FullName, assemblyName);
 
@@ -46,14 +45,14 @@ namespace SpecIFicator.Framework.PluginManagement
                                     assemblies.Add(pluginAssembly);
 
                                 }
-                                catch(Exception exception)
+                                catch (Exception exception)
                                 {
                                     Debug.WriteLine("Unable to load plugin assembly " + assemblyPath);
                                 }
                             }
                         }
 
-                        if(!_pluginCache.ContainsKey(pluginManifest))
+                        if (!_pluginCache.ContainsKey(pluginManifest))
                         {
                             _pluginCache.Add(pluginManifest, assemblies);
                         }
@@ -75,7 +74,7 @@ namespace SpecIFicator.Framework.PluginManagement
                     {
                         if (interfaceType.IsAssignableFrom(type))
                         {
-                            
+
                             count++;
                             yield return type;
                         }
@@ -111,6 +110,21 @@ namespace SpecIFicator.Framework.PluginManagement
                 }
             }
 
+            return result;
+        }
+
+        public static List<string> GetStylesheetNames()
+        {
+            List<string> result = new List<string>();
+
+            foreach (KeyValuePair<PluginManifest, List<Assembly>> plugin in _pluginCache)
+            {
+                foreach (Assembly assembly in plugin.Value)
+                {
+                    string stylesheetName = assembly.GetName().Name + ".bundle.scp.css";
+                    result.Add(stylesheetName);
+                }
+            }
             return result;
         }
     }

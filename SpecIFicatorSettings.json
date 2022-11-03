@@ -73,7 +73,7 @@
                                         },
                                         {
                                             "title": "ResourceView",
-                                            "default": ""
+                                            "default": "SpecIFicator.DefaultPlugin.BlazorComponents.ResourceView"
                                         },
                                         {
                                             "title": "RawView",
