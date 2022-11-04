@@ -26,16 +26,18 @@ namespace SpecIFicator.Framework.Pages
             {
                 Key key = new Key();
                 key.InitailizeFromKeyString(KeyString);
-                HierarchyViewModel hierarchyViewModel = new HierarchyViewModel(DataProviderFactory.MetadataReader,
+
+                HierarchyEditorViewModel hierarchyEditorViewModel = new HierarchyEditorViewModel(DataProviderFactory.MetadataReader,
                                                                                DataProviderFactory.DataReader,
                                                                                DataProviderFactory.DataWriter,
                                                                                key);
+                
 
-                _dataContext.HierarchyViewModel = hierarchyViewModel;
+                _dataContext.HierarchyEditorViewModel = hierarchyEditorViewModel;
 
                 Type type = DynamicConfigurationManager.GetComponentType("HierarchyEditor", 
                                                                          "SpecIFicator",
-                                                                         hierarchyViewModel.RootResourceClassKey);
+                                                                         hierarchyEditorViewModel.RootNode.RootResourceClassKey);
 
                 if(type != null)
                 {

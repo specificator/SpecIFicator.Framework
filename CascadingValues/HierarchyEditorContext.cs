@@ -4,6 +4,6 @@ namespace SpecIFicator.Framework.CascadingValues
 {
     public class HierarchyEditorContext
     {
-        public HierarchyViewModel HierarchyViewModel { get; set; }
+        public HierarchyEditorViewModel HierarchyEditorViewModel { get; set; }
     }
 }
