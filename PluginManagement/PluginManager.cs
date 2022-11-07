@@ -16,45 +16,49 @@ namespace SpecIFicator.Framework.PluginManagement
 
             DirectoryInfo baseDirectoryInfo = new DirectoryInfo(basePath);
 
-            foreach (DirectoryInfo pluginDirectory in baseDirectoryInfo.GetDirectories())
+            if (baseDirectoryInfo.Exists)
             {
-                string pluginManifestPath = pluginDirectory.FullName + "/SpecIFicatorPlugin.json";
 
-                if (File.Exists(pluginManifestPath))
+                foreach (DirectoryInfo pluginDirectory in baseDirectoryInfo.GetDirectories())
                 {
-                    string json = File.ReadAllText(pluginManifestPath);
+                    string pluginManifestPath = pluginDirectory.FullName + "/SpecIFicatorPlugin.json";
 
-                    PluginManifest pluginManifest = JsonConvert.DeserializeObject<PluginManifest>(json);
-
-                    if (pluginManifest != null)
+                    if (File.Exists(pluginManifestPath))
                     {
-                        List<Assembly> assemblies = new List<Assembly>();
+                        string json = File.ReadAllText(pluginManifestPath);
 
-                        foreach (string assemblyName in pluginManifest.Assemblies)
+                        PluginManifest pluginManifest = JsonConvert.DeserializeObject<PluginManifest>(json);
+
+                        if (pluginManifest != null)
                         {
-                            string assemblyPath = Path.Combine(pluginDirectory.FullName, assemblyName);
+                            List<Assembly> assemblies = new List<Assembly>();
 
-                            if (File.Exists(assemblyPath))
+                            foreach (string assemblyName in pluginManifest.Assemblies)
                             {
-                                try
+                                string assemblyPath = Path.Combine(pluginDirectory.FullName, assemblyName);
+
+                                if (File.Exists(assemblyPath))
                                 {
-                                    PluginLoadContext pluginLoadContext = new PluginLoadContext(assemblyPath);
+                                    try
+                                    {
+                                        PluginLoadContext pluginLoadContext = new PluginLoadContext(assemblyPath);
 
-                                    Assembly pluginAssembly = pluginLoadContext.LoadFromAssemblyName(AssemblyName.GetAssemblyName(assemblyPath));
+                                        Assembly pluginAssembly = pluginLoadContext.LoadFromAssemblyName(AssemblyName.GetAssemblyName(assemblyPath));
 
-                                    assemblies.Add(pluginAssembly);
+                                        assemblies.Add(pluginAssembly);
 
-                                }
-                                catch (Exception exception)
-                                {
-                                    Debug.WriteLine("Unable to load plugin assembly " + assemblyPath);
+                                    }
+                                    catch (Exception exception)
+                                    {
+                                        Debug.WriteLine("Unable to load plugin assembly " + assemblyPath);
+                                    }
                                 }
                             }
-                        }
 
-                        if (!_pluginCache.ContainsKey(pluginManifest))
-                        {
-                            _pluginCache.Add(pluginManifest, assemblies);
+                            if (!_pluginCache.ContainsKey(pluginManifest))
+                            {
+                                _pluginCache.Add(pluginManifest, assemblies);
+                            }
                         }
                     }
                 }

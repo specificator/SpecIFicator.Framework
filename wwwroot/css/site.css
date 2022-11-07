@@ -1,8 +1,5 @@
 @import url('open-iconic/font/css/open-iconic-bootstrap.min.css');
 
-/* Just a hack */
-/* @import url('pluginStyles/SpecIFicator.DefaultPlugin.bundle.scp.css'); */
-
 html, body {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }

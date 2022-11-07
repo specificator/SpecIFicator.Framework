@@ -97,7 +97,7 @@ namespace SpecIFicator.Framework
 
             // SpecIFicator framework initialization
             DynamicConfigurationManager.LoadConfiguration();
-            PluginManager.LoadPlugins(@"c:\Users\olli\Documents\work\github\SpecIFicator.Framework\src\plugins\");
+            PluginManager.LoadPlugins(/* @"c:\Users\olli\Documents\work\github\SpecIFicator.Framework\src\plugins\ */);
         }
     }
 }
