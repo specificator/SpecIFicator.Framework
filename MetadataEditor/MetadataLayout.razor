@@ -2,26 +2,19 @@
 
 <PageTitle>SpecIFicator - Metadata</PageTitle>
 
-<div class="main-layout">
-    <div class="topToolbar">
+<div id="main-panel">
+    <div id="menubar">
         <NavMenu />
     </div>
-    <div class="page">
-        <div class="sidebar">
-            <MetadataNavigation />
-        </div>
-
-        <main>
-            @*        <div class="top-row px-4">
-                <a href="https://docs.microsoft.com/aspnet/" target="_blank">About</a>
-                </div>*@
-
-            <article class="content px-4">
-                @Body
-            </article>
-        </main>
+    <div id="navbar">
+         <MetadataNavigation />
     </div>
-    @*<div>Footer</div>*@
+    <div id="main-content">
+        <div id="content-panel">
+            @Body
+        </div>
+         
+    </div>
 </div>
 
 
