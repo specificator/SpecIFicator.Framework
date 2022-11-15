@@ -77,7 +77,7 @@
                                         },
                                         {
                                             "title": "RawView",
-                                            "default": ""
+                                            "default": "SpecIFicator.DefaultPlugin.BlazorComponents.RawViewer"
                                         }
                                     ]
 
