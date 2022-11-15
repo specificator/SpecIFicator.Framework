@@ -1,4 +1,10 @@
-﻿.navbar-toggler {
+﻿.navbar-title {
+    color: rgb(204,0,0);
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.navbar-toggler {
     background-color: lightgray;
 }
 
