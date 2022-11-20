@@ -10,7 +10,7 @@ namespace SpecIFicator.Framework.PluginManagement
 
         private static Dictionary<PluginManifest, List<Assembly>> _pluginCache = new Dictionary<PluginManifest, List<Assembly>>();
 
-        public static void LoadPlugins(string basePath = @"d:\work\github\SpecIFicator.Framework\src\plugins\")
+        public static void LoadPlugins(string basePath = @"d:\work\github\SpecIFicator.Frontend-dev\src\plugins\")
         {
             _pluginCache.Clear();
 
