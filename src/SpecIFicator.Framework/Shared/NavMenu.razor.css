@@ -1,0 +1,9 @@
+.navbar {
+    border-bottom: 1px solid darkgray;
+    height: 51px;
+}
+
+.nav-item {
+    font-weight: bold;
+    font-size: 1.5em;
+}

@@ -1,0 +1,18 @@
+﻿@using SpecIFicator.Framework.RazorComponents
+@page "/"
+@layout EmptyLayout
+
+<PageTitle>SpecIFicator</PageTitle>
+<AddPluginStyles></AddPluginStyles>
+
+@if (_specIfDataProviderFactory.MetadataReader == null)
+{
+    <CascadingValue Value="_dataContext">
+        <SpecIfDataConnector></SpecIfDataConnector>
+    </CascadingValue>
+}
+else
+{
+    _navigationManager.NavigateTo("/projects");    
+}
+

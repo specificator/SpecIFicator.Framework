@@ -1,0 +1,43 @@
+﻿@using MDD4All.SpecIF.ViewModels.Metadata
+@using MDD4All.SpecIF.DataModels.Manipulation
+@page "/statementClasses"
+@layout MetadataLayout
+@if (DataContext.EditModeActive)
+{
+    @*<PropertyClassEditor PropertyClassViewModel="@DataContext" />*@
+}
+else
+{
+    <h3><span class="bi bi-arrow-left-right" aria-hidden="true"></span>&nbsp;Statement Class Browser</h3>
+    @*<div>
+        <button type="button" class="btn btn-success">
+            @L["Button.NewResourceClass"]
+        </button>
+    </div>
+    <br />
+    <h4>@L["Title.PropertyClasses"]</h4>*@
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Icon</th>
+                <th>Title</th>
+                <th>ID</th>
+                <th>Revision</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (StatementClassViewModel viewModel in DataContext.StatementClasses)
+            {
+                <tr>
+                    <td><ResourceClassIcon Icon="@viewModel.ResourceClass.Icon" /></td>
+                    <td><strong>@viewModel.ResourceClass.Title</strong></td>
+                    <td>@viewModel.ResourceClass.ID</td>
+                    <td>@viewModel.ResourceClass.Revision</td>
+                    <td>@((MarkupString)viewModel.ResourceClass.Description.GetDefaultStringValue())</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

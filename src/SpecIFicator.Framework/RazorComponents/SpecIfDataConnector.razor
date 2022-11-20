@@ -1,0 +1,65 @@
+﻿<div class="container">
+    <div class="form-group">
+        <div class="row">
+            <div class="col">
+            </div>
+            <div class="col-6">
+                <img src="images/specificator_logo.png" style="margin-top:100px;" width="100%" />
+            </div>
+            <div class="col">
+            </div>
+        </div>
+
+        <div class="row py-5">
+            <div class="col">
+            </div>
+            <div class="col-6">
+                @L["Label.ChooseConnectorType"]
+                <select class="form-select"
+                        @onchange="OnTypeSelectionChange">
+
+                    @for (int counter = 0; counter < _connectorTypes.Count; counter++)
+                    {
+                        Type type = _connectorTypes[counter];
+
+                        string title = type.GetField("Title")?.GetValue(null)?.ToString();
+
+                        string id = "btnradio" + (counter + 1);
+
+                        <option value="@counter">@title</option>
+
+
+                    }
+                </select>
+            </div>
+            <div class="col">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+            </div>
+            <div class="col-6 py-5 border">
+                <p><DynamicComponent Type="@_activeType" /></p>
+
+            </div>
+            <div class="col">
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col">
+            </div>
+            <div class="col-6 py-5">
+                &copy; MDD4All.de
+            </div>
+            <div class="col">
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+
+
+
