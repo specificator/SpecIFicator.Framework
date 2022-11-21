@@ -27,7 +27,7 @@ namespace SpecIFicator.Framework.Pages
                 Key key = new Key();
                 key.InitailizeFromKeyString(KeyString);
 
-                HierarchyEditorViewModel hierarchyEditorViewModel = new HierarchyEditorViewModel(DataProviderFactory.MetadataReader,
+                HierarchyViewModel hierarchyEditorViewModel = new HierarchyViewModel(DataProviderFactory.MetadataReader,
                                                                                DataProviderFactory.DataReader,
                                                                                DataProviderFactory.DataWriter,
                                                                                key);

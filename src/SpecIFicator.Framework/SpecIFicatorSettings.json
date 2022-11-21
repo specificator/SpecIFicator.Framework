@@ -59,6 +59,12 @@
                                                                         "id": "RC-Paragraph"
                                                                     },
                                                                     "typeName": "SpecIFicator.DefaultPlugin.BlazorComponents.Document.Items.ParagraphDocumentItem"
+                                                                },
+                                                                {
+                                                                    "key": {
+                                                                        "id": "RC-Hierarchy"
+                                                                    },
+                                                                    "typeName": "SpecIFicator.DefaultPlugin.BlazorComponents.Document.Items.HierarchyDocumentItem"
                                                                 }
                                                             ],
                                                             "configurations": [
