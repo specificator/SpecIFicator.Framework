@@ -8,11 +8,11 @@
 @if (_specIfDataProviderFactory.MetadataReader == null)
 {
     <CascadingValue Value="_dataContext">
-        <SpecIfDataConnector></SpecIfDataConnector>
+        <SpecIfDataConnector />
     </CascadingValue>
 }
 else
 {
-    _navigationManager.NavigateTo("/projects");    
+    _navigationManager.NavigateTo(@DefaultPage);    
 }
 

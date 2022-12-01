@@ -1,22 +1,33 @@
-﻿<nav class="navbar navbar-expand-lg navbar-light bg-white">
+﻿@using SpecIFicator.Framework.Configuration
+@using SpecIFicator.Framework.Configuration.DataModels
+@using SpecIFicator.Framework.PluginManagement
+<nav class="navbar navbar-expand-lg navbar-light bg-white">
     <a class="navbar-brand" href="/">
         <img src="_content/SpecIFicator.Framework/images/specificator_logo.png" height="50" />
     </a>
     <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
-            
+            @{
+                List<ComponentDefinition> mainComponents = DynamicConfigurationManager.GetMainComponents();
 
-            <li class="nav-item">
-                <a class="nav-link" href="projects">@L["Menu.Projects"]</a>
-            </li>
+                foreach (ComponentDefinition componentDefinition in mainComponents)
+                {
+                    if (componentDefinition.ShowInMainMenu != null && componentDefinition.ShowInMainMenu == true)
+                    {
+                        try
+                        {
+                            Type type = PluginManager.GetType(componentDefinition.DefaultType);
 
-            @*<li class="nav-item">
-                <a class="nav-link" href="logger">@L["Menu.Logger"]</a>
-            </li>*@
+                            IStringLocalizer stringLocalizer = LocalizerFactory.Create(type);
 
-            <li class="nav-item">
-                <a class="nav-link" href="metadata">@L["Menu.Metatypes"]</a>
-            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/pluginPage/@componentDefinition.ID">@stringLocalizer[componentDefinition.TitleKey]</a>
+                            </li>
+                        }
+                        catch { }
+                    }
+                }
+            }
         </ul>
     </div>
 </nav>

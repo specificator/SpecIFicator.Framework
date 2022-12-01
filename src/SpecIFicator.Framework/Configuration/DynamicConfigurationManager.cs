@@ -21,6 +21,33 @@ namespace SpecIFicator.Framework.Configuration
             }
         }
 
+        public static List<ComponentDefinition> GetMainComponents()
+        {
+            return _specIFicatorConfiguration.Components;
+        }
+
+        public static Type GetComponentTypeByID(string id)
+        {
+            Type result = null;
+
+            string typeName = "";
+
+            foreach(ComponentDefinition component in _specIFicatorConfiguration.Components)
+            {
+                if(component.ID != null && component.ID == id)
+                {
+                    typeName = component.DefaultType;
+                    break;
+                }
+            }
+
+            if(!string.IsNullOrEmpty(typeName))
+            {
+                result = PluginManager.GetType(typeName);
+            }
+
+            return result;
+        }
 
         public static Type GetComponentType(string title, string appliesTo, Key classKey)
         {

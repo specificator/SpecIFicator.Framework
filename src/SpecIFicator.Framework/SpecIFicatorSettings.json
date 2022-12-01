@@ -65,6 +65,12 @@
                                                                         "id": "RC-Hierarchy"
                                                                     },
                                                                     "typeName": "SpecIFicator.DefaultPlugin.BlazorComponents.Document.Items.HierarchyDocumentItem"
+                                                                },
+                                                                {
+                                                                    "key": {
+                                                                        "id": "RC-Diagram"
+                                                                    },
+                                                                    "typeName": "SpecIFicator.DefaultPlugin.BlazorComponents.Document.Items.DiagramDocumentItem"
                                                                 }
                                                             ],
                                                             "configurations": [

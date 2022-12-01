@@ -1,0 +1,11 @@
+﻿@page "/pluginPage/{Topic}/{KeyString?}"
+@if (PageType != null)
+{
+    <CascadingValue Value="@KeyString">
+        <DynamicComponent Type="@PageType"></DynamicComponent>
+    </CascadingValue>
+}
+else
+{
+    <h1>No matching page type found!</h1>
+}

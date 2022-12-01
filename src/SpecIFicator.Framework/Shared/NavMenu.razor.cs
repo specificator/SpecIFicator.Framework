@@ -1,11 +1,19 @@
 ﻿using Microsoft.AspNetCore.Components;
 using Microsoft.Extensions.Localization;
+using SpecIFicator.Framework.Configuration;
+using SpecIFicator.Framework.Configuration.DataModels;
 
 namespace SpecIFicator.Framework.Shared
 {
     public partial class NavMenu
     {
         [Inject]
-        private IStringLocalizer<NavMenu> L { get; set; }
+        public IStringLocalizerFactory LocalizerFactory { get; set; }
+
+
+        protected override void OnInitialized()
+        {
+            
+        }
     }
 }

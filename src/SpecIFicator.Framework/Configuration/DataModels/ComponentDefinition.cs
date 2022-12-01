@@ -7,6 +7,15 @@ namespace SpecIFicator.Framework.Configuration.DataModels
         [JsonProperty("title")]
         public string Title { get; set; }
 
+        [JsonProperty("id")]
+        public string? ID { get; set; }
+
+        [JsonProperty("titleKey")]
+        public string? TitleKey { get; set; }
+
+        [JsonProperty("showInMainMenu")]
+        public bool? ShowInMainMenu { get; set; } = null;
+
         [JsonProperty("default")]
         public string DefaultType { get; set; }
 

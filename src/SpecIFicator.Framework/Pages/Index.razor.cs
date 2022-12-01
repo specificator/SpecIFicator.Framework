@@ -17,6 +17,8 @@ using SpecIFicator.Framework.RazorComponents;
 using MDD4All.SpecIF.DataProvider.Contracts;
 using SpecIFicator.Framework.CascadingValues;
 using Microsoft.Extensions.Localization;
+using SpecIFicator.Framework.Configuration;
+using SpecIFicator.Framework.Configuration.DataModels;
 
 namespace SpecIFicator.Framework.Pages
 {
@@ -33,10 +35,19 @@ namespace SpecIFicator.Framework.Pages
 
         private SpecIfDataConnectorContext _dataContext = new SpecIfDataConnectorContext();
 
+        private string DefaultPage { get; set; } = "";
+
         protected override void OnInitialized()
         {
             _dataContext.SpecIfDataProviderFactory = _specIfDataProviderFactory;
             _dataContext.ConnectAction = HandleConnectClick;
+
+            List<ComponentDefinition> mainComponents = DynamicConfigurationManager.GetMainComponents();
+
+            if(mainComponents.Any())
+            {
+                DefaultPage = "/pluginPage/" + mainComponents[0].ID;
+            }
         }
 
         private void HandleConnectClick()
