@@ -16,7 +16,7 @@
             <div class="col-6">
                 @L["Label.ChooseConnectorType"]
                 <select class="form-select"
-                        @onchange="OnTypeSelectionChange">
+                        @onchange="@OnTypeSelectionChange">
 
                     @for (int counter = 0; counter < _connectorTypes.Count; counter++)
                     {
@@ -26,8 +26,14 @@
 
                         string id = "btnradio" + (counter + 1);
 
-                        <option value="@counter">@title</option>
-
+                        if (ActiveType != null && ActiveType.FullName == type.FullName)
+                        {
+                            <option selected value="@type.FullName">@title</option>
+                        }
+                        else
+                        {
+                            <option value="@type.FullName">@title</option>
+                        }
 
                     }
                 </select>
@@ -39,7 +45,7 @@
             <div class="col">
             </div>
             <div class="col-6 py-5 border">
-                <p><DynamicComponent Type="@_activeType" /></p>
+                <p><DynamicComponent Type="@ActiveType" /></p>
 
             </div>
             <div class="col">
