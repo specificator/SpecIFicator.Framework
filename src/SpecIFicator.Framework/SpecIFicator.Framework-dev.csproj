@@ -34,6 +34,7 @@
       <ProjectReference Include="..\..\..\MDD4All.SpecIF.ViewModels\src\MDD4All.SpecIF.ViewModels\MDD4All.SpecIF.ViewModels-dev.csproj" />
       <ProjectReference Include="..\..\..\MDD4All.UI.BlazorComponents\src\MDD4All.UI.BlazorComponents\MDD4All.UI.BlazorComponents-dev.csproj" />
       <ProjectReference Include="..\..\..\Summernote\BlazingComponents.Summernote.csproj" />
+      <ProjectReference Include="..\..\..\VisNetwork.Blazor\src\VisNetwork.Blazor\VisNetwork.Blazor-dev.csproj" />
     </ItemGroup>
 
     <ItemGroup>
