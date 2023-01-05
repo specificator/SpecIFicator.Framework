@@ -5,14 +5,14 @@
 <PageTitle>SpecIFicator</PageTitle>
 <AddPluginStyles></AddPluginStyles>
 
-@if (_specIfDataProviderFactory.MetadataReader == null)
+@if (SpecIfDataProviderFactory.MetadataReader == null)
 {
-    <CascadingValue Value="_dataContext">
+    <CascadingValue Value="@DataContext">
         <SpecIfDataConnector />
     </CascadingValue>
 }
 else
 {
-    _navigationManager.NavigateTo(@DefaultPage);    
+    NavigationManager.NavigateTo(@DefaultPage);    
 }
 

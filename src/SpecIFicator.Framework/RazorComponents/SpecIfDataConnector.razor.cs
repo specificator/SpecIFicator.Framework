@@ -1,11 +1,11 @@
 using Microsoft.AspNetCore.Components;
-using SpecIFicator.Framework.CascadingValues;
 using SpecIFicator.Framework.PluginManagement;
 using SpecIFicator.Framework.Contracts;
 using Microsoft.Extensions.Localization;
 using MDD4All.Configuration.Contracts;
 using SpecIFicator.Framework.Configuration;
 using MDD4All.Configuration;
+using MDD4All.SpecIF.ViewModels;
 
 namespace SpecIFicator.Framework.RazorComponents
 {
@@ -15,7 +15,7 @@ namespace SpecIFicator.Framework.RazorComponents
         IStringLocalizer<SpecIfDataConnector> L { get; set; }
 
         [CascadingParameter]
-        private SpecIfDataConnectorContext _dataContext { get; set; }
+        private DataConnectorViewModel DataContext { get; set; }
 
         private List<Type> _connectorTypes = new List<Type>();
 

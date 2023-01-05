@@ -64,8 +64,6 @@ namespace SpecIFicator.Framework.Configuration
                 foreach (SpecificTypeConfiguration specificType in componentDefinition.SpecificTypes)
                 {
                     if (specificType.Key.ID == classKey.ID)
-
-                        
                     {
                         if (string.IsNullOrEmpty(specificType.Key.Revision))
                         {
@@ -97,11 +95,46 @@ namespace SpecIFicator.Framework.Configuration
             return result;
         }
 
-        
+        public static DynamicComponentConfiguration GetDynamicComponentConfiguration(string appliesTo)
+        {
+            return FindDynamicComponentConfigurationRecursively(appliesTo, _specIFicatorConfiguration);
+        }
+
+        private static DynamicComponentConfiguration FindDynamicComponentConfigurationRecursively(string appliesTo, 
+                                                                                                  DynamicComponentConfiguration currentNode)
+        {
+            DynamicComponentConfiguration result = null;
+
+            if(currentNode.AppliesTo == appliesTo)
+            {
+                result = currentNode;
+            }
+            else
+            {
+                foreach(ComponentDefinition componentDefinition in currentNode.Components)
+                {
+                    foreach(DynamicComponentConfiguration childNode in componentDefinition.Configurations)
+                    {
+                        result = FindDynamicComponentConfigurationRecursively(appliesTo, childNode);
+                        if (result != null)
+                        {
+                            break;
+                        }
+                    }
+                    if (result != null)
+                    {
+                        break;
+                    }
+                }
+            }
+
+
+            return result;
+        }
 
         private static ComponentDefinition FindComponentDefinitionRecursively(DynamicComponentConfiguration currentNode,                              
-                                                                                           string title,
-                                                                                           string appliesTo)
+                                                                              string title,
+                                                                              string appliesTo)
         {
             ComponentDefinition result = null;
 

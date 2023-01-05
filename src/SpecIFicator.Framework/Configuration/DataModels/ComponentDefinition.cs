@@ -13,6 +13,9 @@ namespace SpecIFicator.Framework.Configuration.DataModels
         [JsonProperty("titleKey")]
         public string? TitleKey { get; set; }
 
+        [JsonProperty("icon")]
+        public string? Icon { get; set; }
+
         [JsonProperty("showInMainMenu")]
         public bool? ShowInMainMenu { get; set; } = null;
 
