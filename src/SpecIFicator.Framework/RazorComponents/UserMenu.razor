@@ -11,6 +11,15 @@
                 <i class="bi bi-box-arrow-right"></i> @L["Button.Logout"]
             </button>
         </li>
+        @if(SpecIfStreamDataSubscriberProvider != null && SpecIfStreamDataSubscriberProvider.StreamDataSubscriber != null)
+        {
+            <li>
+            <button class="dropdown-item"
+                    @onclick="@OnUnsubscribeClick">
+                <i class="bi bi-stop-circle"></i> @L["Button.Unsubscribe"]
+            </button>
+        </li>
+        }
     </ul>
 </div>
 

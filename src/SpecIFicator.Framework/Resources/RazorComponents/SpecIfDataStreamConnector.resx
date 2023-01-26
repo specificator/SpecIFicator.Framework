@@ -117,10 +117,10 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Button.Logout" xml:space="preserve">
-    <value>Logut</value>
+  <data name="Label.ChooseConnectorType" xml:space="preserve">
+    <value>Please choose data stream connector type...</value>
   </data>
-  <data name="Button.Unsubscribe" xml:space="preserve">
-    <value>Stop streaming</value>
+  <data name="Label.ConnectWithDataStream" xml:space="preserve">
+    <value>Connect with data stream...</value>
   </data>
 </root>

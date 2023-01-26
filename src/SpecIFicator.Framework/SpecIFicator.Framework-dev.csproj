@@ -39,6 +39,32 @@
     </ItemGroup>
 
     <ItemGroup>
+      <Compile Update="Resources\RazorComponents\SpecIfDataStreamConnector.Designer.cs">
+        <DesignTime>True</DesignTime>
+        <AutoGen>True</AutoGen>
+        <DependentUpon>SpecIfDataStreamConnector.resx</DependentUpon>
+      </Compile>
+      <Compile Update="Resources\RazorComponents\UserMenu.de.Designer.cs">
+        <DependentUpon>UserMenu.de.resx</DependentUpon>
+        <DesignTime>True</DesignTime>
+        <AutoGen>True</AutoGen>
+      </Compile>
+      <Compile Update="Resources\RazorComponents\UserMenu.Designer.cs">
+        <DesignTime>True</DesignTime>
+        <AutoGen>True</AutoGen>
+        <DependentUpon>UserMenu.resx</DependentUpon>
+      </Compile>
+    </ItemGroup>
+
+    <ItemGroup>
+      <EmbeddedResource Update="Resources\RazorComponents\SpecIfDataStreamConnector.resx">
+        <Generator>ResXFileCodeGenerator</Generator>
+        <LastGenOutput>SpecIfDataStreamConnector.Designer.cs</LastGenOutput>
+      </EmbeddedResource>
+      <EmbeddedResource Update="Resources\RazorComponents\UserMenu.de.resx">
+        <LastGenOutput>UserMenu.de.Designer.cs</LastGenOutput>
+        <Generator>ResXFileCodeGenerator</Generator>
+      </EmbeddedResource>
       <EmbeddedResource Update="Resources\RazorComponents\UserMenu.resx">
         <Generator>ResXFileCodeGenerator</Generator>
         <LastGenOutput>UserMenu.Designer.cs</LastGenOutput>

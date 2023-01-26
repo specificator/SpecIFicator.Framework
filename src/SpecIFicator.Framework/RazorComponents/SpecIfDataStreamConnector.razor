@@ -1,0 +1,56 @@
+﻿<div class="container">
+    <div class="form-group">
+        <div class="row">
+            <div class="col">
+            </div>
+            <div class="col-6">
+                <h2>@L["Label.ConnectWithDataStream"]</h2>
+            </div>
+            <div class="col">
+            </div>
+        </div>
+
+        <div class="row py-5">
+            <div class="col">
+            </div>
+            <div class="col-6">
+                @L["Label.ChooseConnectorType"]
+                <select class="form-select"
+                        @onchange="@OnTypeSelectionChange">
+
+                    @for (int counter = 0; counter < _connectorTypes.Count; counter++)
+                    {
+                        Type type = _connectorTypes[counter];
+
+                        string title = type.GetField("Title")?.GetValue(null)?.ToString();
+
+                        string id = "btnradio" + (counter + 1);
+
+                        if (ActiveType != null && ActiveType.FullName == type.FullName)
+                        {
+                            <option selected value="@type.FullName">@title</option>
+                        }
+                        else
+                        {
+                            <option value="@type.FullName">@title</option>
+                        }
+
+                    }
+                </select>
+            </div>
+            <div class="col">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+            </div>
+            <div class="col-6 py-5 border">
+                <p><DynamicComponent Type="@ActiveType" /></p>
+
+            </div>
+            <div class="col">
+            </div>
+        </div>
+    </div>
+
+</div>

@@ -1,4 +1,5 @@
 using MDD4All.SpecIF.DataProvider.Contracts;
+using MDD4All.SpecIF.DataProvider.Contracts.DataStreams;
 using Microsoft.AspNetCore.Components;
 using Microsoft.Extensions.Localization;
 
@@ -11,6 +12,9 @@ namespace SpecIFicator.Framework.RazorComponents
 
         [Inject]
         private ISpecIfDataProviderFactory SpecIfDataProviderFactory { get; set; }
+
+        [Inject]
+        private ISpecIfStreamDataSubscriberProvider SpecIfStreamDataSubscriberProvider { get; set; }
 
         [Inject]
         private NavigationManager NavigationManager { get; set; }
@@ -27,7 +31,23 @@ namespace SpecIFicator.Framework.RazorComponents
         {
             SpecIfDataProviderFactory.MetadataReader = null;
 
+            // stop streaming
+            OnUnsubscribeClick();
+
             NavigationManager.NavigateTo("/");
+        }
+
+        private void OnUnsubscribeClick()
+        {
+            if (SpecIfStreamDataSubscriberProvider != null && SpecIfStreamDataSubscriberProvider.StreamDataSubscriber != null)
+            {
+                if (SpecIfStreamDataSubscriberProvider.StreamDataSubscriber is IDisposable)
+                {
+                    IDisposable disposable = (IDisposable)SpecIfStreamDataSubscriberProvider.StreamDataSubscriber;
+                    disposable.Dispose();
+                }
+                SpecIfStreamDataSubscriberProvider.StreamDataSubscriber = null;
+            }
         }
     }
 }

@@ -31,7 +31,7 @@ namespace SpecIFicator.Framework.RazorComponents
             }
             set
             {
-                foreach(var type in _connectorTypes)
+                foreach(Type? type in _connectorTypes)
                 {
                     if(type.FullName == value)
                     {
