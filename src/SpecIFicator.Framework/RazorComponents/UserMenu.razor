@@ -1,14 +1,14 @@
 ﻿<div class="dropdown dropstart">
     <button class="btn rounded-circle"
-            @onclick="e => this.show = !this.show"
+            @onclick="e => _show = !_show"
             @onfocusout="OutFocus">
         <i class="bi bi-person-fill"></i>
     </button>
-    <ul class="dropdown-menu dropdown-menu-end @(show? "show":"")">
+    <ul class="dropdown-menu dropdown-menu-end @(_show? "show":"")">
         <li>
             <button class="dropdown-item"
                     @onclick="@OnLogoutClick">
-                <i class="bi bi-box-arrow-right"></i> Logout
+                <i class="bi bi-box-arrow-right"></i> @L["Button.Logout"]
             </button>
         </li>
     </ul>
