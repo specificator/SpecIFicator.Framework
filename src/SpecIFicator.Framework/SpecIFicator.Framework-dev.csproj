@@ -39,6 +39,16 @@
     </ItemGroup>
 
     <ItemGroup>
+      <Compile Update="Resources\RazorComponents\NoPluginsDisplay.de.Designer.cs">
+        <DependentUpon>NoPluginsDisplay.de.resx</DependentUpon>
+        <DesignTime>True</DesignTime>
+        <AutoGen>True</AutoGen>
+      </Compile>
+      <Compile Update="Resources\RazorComponents\NoPluginsDisplay.Designer.cs">
+        <DesignTime>True</DesignTime>
+        <AutoGen>True</AutoGen>
+        <DependentUpon>NoPluginsDisplay.resx</DependentUpon>
+      </Compile>
       <Compile Update="Resources\RazorComponents\SpecIfDataStreamConnector.Designer.cs">
         <DesignTime>True</DesignTime>
         <AutoGen>True</AutoGen>
@@ -57,6 +67,14 @@
     </ItemGroup>
 
     <ItemGroup>
+      <EmbeddedResource Update="Resources\RazorComponents\NoPluginsDisplay.de.resx">
+        <LastGenOutput>NoPluginsDisplay.de.Designer.cs</LastGenOutput>
+        <Generator>ResXFileCodeGenerator</Generator>
+      </EmbeddedResource>
+      <EmbeddedResource Update="Resources\RazorComponents\NoPluginsDisplay.resx">
+        <Generator>ResXFileCodeGenerator</Generator>
+        <LastGenOutput>NoPluginsDisplay.Designer.cs</LastGenOutput>
+      </EmbeddedResource>
       <EmbeddedResource Update="Resources\RazorComponents\SpecIfDataStreamConnector.resx">
         <Generator>ResXFileCodeGenerator</Generator>
         <LastGenOutput>SpecIfDataStreamConnector.Designer.cs</LastGenOutput>

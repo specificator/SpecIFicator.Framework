@@ -10,11 +10,22 @@ namespace SpecIFicator.Framework.PluginManagement
 
         private static Dictionary<PluginManifest, List<Assembly>> _pluginCache = new Dictionary<PluginManifest, List<Assembly>>();
 
-        public static void LoadPlugins(string basePath = @"d:\work\github\SpecIFicator.Frontend-dev\src\plugins\")
+        private static string _basePath = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "/SpecIFicator/plugins";
+
+        public static string PluginPath
         {
+            get
+            {
+                DirectoryInfo pluginDirectory = new DirectoryInfo(_basePath);
+                return pluginDirectory.FullName;
+            }
+        }
+
+        public static void LoadPlugins()
+        {            
             _pluginCache.Clear();
 
-            DirectoryInfo baseDirectoryInfo = new DirectoryInfo(basePath);
+            DirectoryInfo baseDirectoryInfo = new DirectoryInfo(_basePath);
 
             if (baseDirectoryInfo.Exists)
             {
@@ -64,6 +75,11 @@ namespace SpecIFicator.Framework.PluginManagement
                 }
             }
 
+        }
+
+        public static bool NoPluginsAvailable()
+        {
+            return _pluginCache.Count == 0;
         }
 
         public static IEnumerable<Type> GetTypes(Type interfaceType)

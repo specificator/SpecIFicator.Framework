@@ -2,6 +2,7 @@ using MDD4All.SpecIF.DataProvider.Contracts;
 using MDD4All.SpecIF.DataProvider.Contracts.DataStreams;
 using Microsoft.AspNetCore.Components;
 using Microsoft.Extensions.Localization;
+using System.Globalization;
 
 namespace SpecIFicator.Framework.RazorComponents
 {
@@ -49,5 +50,12 @@ namespace SpecIFicator.Framework.RazorComponents
                 SpecIfStreamDataSubscriberProvider.StreamDataSubscriber = null;
             }
         }
+
+        //private void OnGermanClick()
+        //{
+        //    CultureInfo.CurrentCulture = new CultureInfo("de");
+        //    CultureInfo.CurrentUICulture = new CultureInfo("de");
+        //    NavigationManager.NavigateTo("/");
+        //}
     }
 }

@@ -50,7 +50,7 @@ namespace SpecIFicator.Framework.RazorComponents
 
         protected override void OnInitialized()
         {
-            _configurationReaderWriter = new FileConfigurationReaderWriter<DataConnectorConfiguration>();
+            _configurationReaderWriter = new FileConfigurationReaderWriter<DataConnectorConfiguration>("SpecIFicator");
 
             _configuration = _configurationReaderWriter.GetConfiguration();
 

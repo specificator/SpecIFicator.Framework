@@ -1,18 +1,26 @@
-﻿@using SpecIFicator.Framework.RazorComponents
+﻿@using SpecIFicator.Framework.PluginManagement
+@using SpecIFicator.Framework.RazorComponents
 @page "/"
 @layout EmptyLayout
 
 <PageTitle>SpecIFicator</PageTitle>
-<AddPluginStyles></AddPluginStyles>
-
-@if (SpecIfDataProviderFactory.MetadataReader == null)
+@if (PluginManager.NoPluginsAvailable())
 {
-    <CascadingValue Value="@DataContext">
-        <SpecIfDataConnector />
-    </CascadingValue>
+    <NoPluginsDisplay />
 }
 else
 {
-    NavigationManager.NavigateTo(@DefaultPage);    
-}
 
+    <AddPluginStyles></AddPluginStyles>
+
+    @if (SpecIfDataProviderFactory.MetadataReader == null)
+    {
+        <CascadingValue Value="@DataContext">
+            <SpecIfDataConnector />
+        </CascadingValue>
+    }
+    else
+    {
+        NavigationManager.NavigateTo(@DefaultPage);
+    }
+}
