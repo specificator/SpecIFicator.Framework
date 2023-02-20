@@ -52,7 +52,11 @@ namespace SpecIFicator.Framework.PluginManagement
                                 {
                                     try
                                     {
-                                        PluginLoadContext pluginLoadContext = new PluginLoadContext(assemblyPath);
+                                        string hostDllPath = new Uri(Assembly.GetExecutingAssembly().CodeBase).AbsolutePath;
+
+                                        string hostPath = Path.GetDirectoryName(hostDllPath);
+
+                                        PluginLoadContext pluginLoadContext = new PluginLoadContext(assemblyPath, hostPath);
 
                                         Assembly pluginAssembly = pluginLoadContext.LoadFromAssemblyName(AssemblyName.GetAssemblyName(assemblyPath));
 
