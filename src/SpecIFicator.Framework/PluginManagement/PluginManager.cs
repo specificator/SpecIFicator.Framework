@@ -66,6 +66,7 @@ namespace SpecIFicator.Framework.PluginManagement
                                     catch (Exception exception)
                                     {
                                         Debug.WriteLine("Unable to load plugin assembly " + assemblyPath);
+                                        Debug.WriteLine(exception);
                                     }
                                 }
                             }
@@ -76,6 +77,24 @@ namespace SpecIFicator.Framework.PluginManagement
                             }
                         }
                     }
+                }
+            }
+            else
+            {
+                string specificatorDir = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "/SpecIFicator/";
+
+                if(!Directory.Exists(specificatorDir))
+                {
+                    Directory.CreateDirectory(specificatorDir);
+
+
+                }
+
+                string pluginDirectoryPath = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "/SpecIFicator/plugins/";
+                
+                if(!Directory.Exists(pluginDirectoryPath))
+                {
+                    Directory.CreateDirectory(pluginDirectoryPath);
                 }
             }
 
