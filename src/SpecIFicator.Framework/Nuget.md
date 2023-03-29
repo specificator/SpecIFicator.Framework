@@ -1,0 +1,1 @@
+﻿SpecIFicator frontend framework to provide a user interface framework with plugin management.
