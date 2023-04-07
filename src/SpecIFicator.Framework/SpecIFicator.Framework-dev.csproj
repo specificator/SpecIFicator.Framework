@@ -25,7 +25,7 @@
       <ProjectReference Include="..\..\..\MDD4All.SpecIF.DataFactory\src\MDD4All.SpecIF.DataFactory\MDD4All.SpecIF.DataFactory-dev.csproj" />
       <ProjectReference Include="..\..\..\MDD4All.SpecIF.ViewModels\src\MDD4All.SpecIF.ViewModels\MDD4All.SpecIF.ViewModels-dev.csproj" />
       <ProjectReference Include="..\..\..\MDD4All.UI.BlazorComponents\src\MDD4All.UI.BlazorComponents\MDD4All.UI.BlazorComponents-dev.csproj" />
-      <ProjectReference Include="..\..\..\Summernote\BlazingComponents.Summernote.csproj" />
+      <ProjectReference Include="..\..\..\Summernote\src\BlazingComponents.Summernote\BlazingComponents.Summernote-dev.csproj" />
     </ItemGroup>
 
     <ItemGroup>
