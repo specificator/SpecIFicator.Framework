@@ -4,6 +4,10 @@
             @onfocusout="OutFocus">
         <i class="bi bi-person-fill"></i>
     </button>
+    <button class="btn rounded-circle"
+            @onclick="@OnAppInfoClick">
+        <i class="bi bi-info-circle-fill"></i>
+    </button>
     <ul class="dropdown-menu dropdown-menu-end @(_show? "show":"")">
         <li>
             <button class="dropdown-item"

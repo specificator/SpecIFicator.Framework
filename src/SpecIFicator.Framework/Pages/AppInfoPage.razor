@@ -1,0 +1,90 @@
+﻿@page "/AppInfo"
+@using System.Reflection;
+@using SpecIFicator.Framework.PluginManagement;
+@using SpecIFicator.Framework.PluginManagement.DataModels;
+
+<div class="page p-2">
+    <h1><i class="bi bi-info-circle-fill"></i> @L["Heading.ApplicationInfo"]</h1>
+
+    <p>
+        @L["Text.AppDescription"]
+        
+        @{
+            MarkupString homepageText = (MarkupString)(L["Text.HomepageText"].ToString());
+         }
+         @homepageText
+    </p>
+    <p>@L["Text.OriginalAuthor"] Dr. Oliver Alt, MDD4All.de</p>
+
+    <h2>@L["Heading.Plugins"] (@PluginManager.GetPluginManifests().Count)</h2>
+    <div>@L["Label.PluginPath"] <span class="code">@PluginManager.PluginPath</span></div>
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        @foreach (KeyValuePair<PluginManifest, List<Assembly>> pluginManifest in PluginManager.GetPluginManifests())
+        {
+            <div class="col">
+                <div class="card" style="background-color: tomato">
+
+                    <div class="card-body">
+                        <h5 class="card-title bold">@pluginManifest.Key.Title</h5>
+                        <p class="card-text">@pluginManifest.Key.Description</p>
+
+                    </div>
+                    <div class="card-body" style="background-color: lightgray">
+
+                        @{
+                            List<Assembly> assemblies = pluginManifest.Value;
+                        }
+                        <table width="100%">
+                            @foreach (Assembly assembly in assemblies)
+                            {
+                                <tr>
+                                    <td class="code">
+                                        @assembly.GetName().Name
+                                    </td>
+                                    <td class="code">
+                                        @assembly.GetName().Version
+                                    </td>
+                                </tr>
+                            }
+                        </table>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+
+    <h2 class="pt-2">@L["Heading.Framework"]</h2>
+    @{
+        Assembly executingAssembly = System.Reflection.Assembly.GetExecutingAssembly();
+
+    }
+    <div class="code">
+        @(executingAssembly.GetName().Name), Version:
+        @executingAssembly.GetName().Version
+    </div>
+
+
+    <h2 class="pt-2">@L["Heading.Assemblies"]</h2>
+    <table width="100%"
+           class="table table-striped table-bordered table-sm">
+        <thead>
+            <tr>
+                <th>
+                    @L["Label.Name"]
+                </th>
+                <th>
+                    @L["Label.Version"]
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (AssemblyName assemblyName in CurrentAssemblies)
+            {
+                <tr>
+                    <td class="code">@(assemblyName.Name)</td>
+                    <td class="code">@assemblyName.Version</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,14 @@
+﻿.bold {
+    font-weight: bold;
+}
+
+.code {
+    font-family: Courier New, Courier, monospace
+}
+
+.page {
+    overflow-y:auto;
+    overflow-x:clip;
+    height: calc(100vh - 53px);
+    width: 100%;
+}

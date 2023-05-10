@@ -51,6 +51,11 @@ namespace SpecIFicator.Framework.RazorComponents
             }
         }
 
+        private void OnAppInfoClick()
+        {
+            NavigationManager.NavigateTo("/AppInfo");
+        }
+
         //private void OnGermanClick()
         //{
         //    CultureInfo.CurrentCulture = new CultureInfo("de");

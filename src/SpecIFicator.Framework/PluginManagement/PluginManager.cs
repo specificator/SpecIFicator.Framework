@@ -170,5 +170,10 @@ namespace SpecIFicator.Framework.PluginManagement
             }
             return result;
         }
+
+        public static Dictionary<PluginManifest, List<Assembly>> GetPluginManifests()
+        {
+            return _pluginCache;
+        }
     }
 }
