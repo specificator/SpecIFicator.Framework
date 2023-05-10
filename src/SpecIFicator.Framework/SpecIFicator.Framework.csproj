@@ -18,7 +18,7 @@
 
     <ItemGroup>
         <PackageReference Include="MDD4All.Configuration" Version="3.0.0.15" />
-        <PackageReference Include="MDD4All.SpecIF.ViewModels" Version="2.0.0.4" />
+        <PackageReference Include="MDD4All.SpecIF.ViewModels" Version="2.0.2.7" />
         <PackageReference Include="MDD4All.UI.BlazorComponents" Version="2.0.1.4" />
     </ItemGroup>
     
