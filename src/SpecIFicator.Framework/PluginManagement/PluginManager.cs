@@ -10,7 +10,12 @@ namespace SpecIFicator.Framework.PluginManagement
 
         private static Dictionary<PluginManifest, List<Assembly>> _pluginCache = new Dictionary<PluginManifest, List<Assembly>>();
 
+#if DEBUG
+        private static string _basePath = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "/SpecIFicator/plugins/Debug";
+#else
         private static string _basePath = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "/SpecIFicator/plugins";
+#endif
+
 
         public static string PluginPath
         {
