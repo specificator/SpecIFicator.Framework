@@ -1,6 +1,9 @@
 ﻿SpecIFicator frontend framework to provide a user interface framework with plugin management.
 
 ## Changes
+### 2.2.0
+* Update nuget reference of SpecIF.ViewModels to 2.0.4.9
+* Load plugins in debug mode from Debug subdirectory
 
 ### 2.1.1
 * Update nuget reference of SpecIF.ViewModels to 2.0.3.8
