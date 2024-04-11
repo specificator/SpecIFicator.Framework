@@ -153,12 +153,15 @@ namespace SpecIFicator.Framework.Configuration
             {
                 foreach(ComponentDefinition componentDefinition in currentNode.Components)
                 {
-                    foreach(DynamicComponentConfiguration childConfigration in componentDefinition.Configurations)
+                    if (componentDefinition.Configurations != null)
                     {
-                        result = FindComponentDefinitionRecursively(childConfigration, title, appliesTo);
-                        if(result != null)
+                        foreach (DynamicComponentConfiguration childConfigration in componentDefinition.Configurations)
                         {
-                            break;
+                            result = FindComponentDefinitionRecursively(childConfigration, title, appliesTo);
+                            if (result != null)
+                            {
+                                break;
+                            }
                         }
                     }
                     if (result != null)
