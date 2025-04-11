@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Components;
 using Microsoft.Extensions.Localization;
+using SpecIFicator.Framework.DataModels;
 using System.Reflection;
 
 namespace SpecIFicator.Framework.Pages
@@ -9,18 +10,26 @@ namespace SpecIFicator.Framework.Pages
         [Inject]
         IStringLocalizer<AppInfoPage> L { get; set; }
 
-        private List<AssemblyName> CurrentAssemblies
+        private List<AssemblyInformation> CurrentAssemblies
         {
             get
             {
-                List<AssemblyName> result = new List<AssemblyName>();
+                List<AssemblyInformation> result = new List<AssemblyInformation>();
 
                 foreach(Assembly assembly in AppDomain.CurrentDomain.GetAssemblies())
                 {
-                    result.Add(assembly.GetName());
+                    try
+                    {
+                        result.Add(new AssemblyInformation
+                        {
+                            AssemblyName = assembly.GetName(),
+                            Location = assembly.Location
+                        });
+                    }
+                    catch { }
                 }
 
-                result = result.OrderBy(x => x.Name).ToList();
+                //result = result.OrderBy(x => x.AssemblyName).ToList();
 
                 return result;
             }

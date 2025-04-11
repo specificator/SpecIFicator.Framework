@@ -1,5 +1,6 @@
 ﻿@page "/AppInfo"
 @using System.Reflection;
+@using SpecIFicator.Framework.DataModels
 @using SpecIFicator.Framework.PluginManagement;
 @using SpecIFicator.Framework.PluginManagement.DataModels;
 
@@ -78,11 +79,12 @@
             </tr>
         </thead>
         <tbody>
-            @foreach (AssemblyName assemblyName in CurrentAssemblies)
+            @foreach (AssemblyInformation assembly in CurrentAssemblies)
             {
                 <tr>
-                    <td class="code">@(assemblyName.Name)</td>
-                    <td class="code">@assemblyName.Version</td>
+                    <td class="code">@(assembly.Location + "/" + assembly.AssemblyName.Name)</td>
+                    <td class="code">@assembly.AssemblyName.Version</td>
+                    
                 </tr>
             }
         </tbody>
