@@ -1,7 +1,7 @@
-﻿@page "/pluginPage/{Topic}/{KeyString?}"
+﻿@page "/pluginPage/{Topic}/{*PageRoute}"
 @if (PageType != null)
 {
-    <CascadingValue Value="@KeyString">
+    <CascadingValue Value="@PageRoute">
         <DynamicComponent Type="@PageType"></DynamicComponent>
     </CascadingValue>
 }

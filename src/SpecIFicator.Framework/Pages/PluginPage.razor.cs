@@ -30,7 +30,7 @@ namespace SpecIFicator.Framework.Pages
         }
 
         [Parameter]
-        public string KeyString { get; set; }
+        public string? PageRoute { get; set; }
 
         private Type PageType { get; set; }
     }
