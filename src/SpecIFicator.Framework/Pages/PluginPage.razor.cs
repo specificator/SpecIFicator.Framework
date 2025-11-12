@@ -7,12 +7,12 @@ namespace SpecIFicator.Framework.Pages
     public partial class PluginPage
     {
         [Inject]
-        private ISpecIfDataProviderFactory DataProviderFactory { get; set; }
+        private ISpecIfDataProviderFactory DataProviderFactory { get; set; } = null!;
 
-        private string _topic;
+        private string? _topic;
 
         [Parameter]
-        public string Topic { 
+        public string? Topic { 
             
             get
             {
@@ -24,7 +24,7 @@ namespace SpecIFicator.Framework.Pages
                 _topic = value;
                 if (_topic != null)
                 {
-                    PageType = DynamicConfigurationManager.GetComponentTypeByID(Topic);
+                    PageType = DynamicConfigurationManager.GetComponentTypeByID(_topic);
                 }
             }
         }
@@ -32,6 +32,6 @@ namespace SpecIFicator.Framework.Pages
         [Parameter]
         public string? PageRoute { get; set; }
 
-        private Type PageType { get; set; }
+        private Type? PageType { get; set; }
     }
 }

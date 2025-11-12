@@ -26,9 +26,9 @@ namespace SpecIFicator.Framework.Configuration
             return _specIFicatorConfiguration.Components;
         }
 
-        public static Type GetComponentTypeByID(string id)
+        public static Type? GetComponentTypeByID(string id)
         {
-            Type result = null;
+            Type? result = null;
 
             string typeName = "";
 
@@ -49,13 +49,13 @@ namespace SpecIFicator.Framework.Configuration
             return result;
         }
 
-        public static Type GetComponentType(string title, string appliesTo, Key classKey)
+        public static Type? GetComponentType(string title, string? appliesTo, Key? classKey)
         {
-            Type result = null;
+            Type? result = null;
 
             string typeName = "";
 
-            ComponentDefinition componentDefinition = FindComponentDefinitionRecursively(_specIFicatorConfiguration,
+            ComponentDefinition? componentDefinition = FindComponentDefinitionRecursively(_specIFicatorConfiguration,
                                                                                          title,
                                                                                          appliesTo);
 
@@ -63,7 +63,7 @@ namespace SpecIFicator.Framework.Configuration
             {
                 foreach (SpecificTypeConfiguration specificType in componentDefinition.SpecificTypes)
                 {
-                    if (specificType.Key.ID == classKey.ID)
+                    if (classKey != null && specificType.Key.ID == classKey.ID)
                     {
                         if (string.IsNullOrEmpty(specificType.Key.Revision))
                         {
@@ -95,15 +95,15 @@ namespace SpecIFicator.Framework.Configuration
             return result;
         }
 
-        public static DynamicComponentConfiguration GetDynamicComponentConfiguration(string appliesTo)
+        public static DynamicComponentConfiguration? GetDynamicComponentConfiguration(string appliesTo)
         {
             return FindDynamicComponentConfigurationRecursively(appliesTo, _specIFicatorConfiguration);
         }
 
-        private static DynamicComponentConfiguration FindDynamicComponentConfigurationRecursively(string appliesTo, 
+        private static DynamicComponentConfiguration? FindDynamicComponentConfigurationRecursively(string appliesTo, 
                                                                                                   DynamicComponentConfiguration currentNode)
         {
-            DynamicComponentConfiguration result = null;
+            DynamicComponentConfiguration? result = null;
 
             if(currentNode.AppliesTo == appliesTo)
             {
@@ -132,11 +132,11 @@ namespace SpecIFicator.Framework.Configuration
             return result;
         }
 
-        private static ComponentDefinition FindComponentDefinitionRecursively(DynamicComponentConfiguration currentNode,                              
+        private static ComponentDefinition? FindComponentDefinitionRecursively(DynamicComponentConfiguration currentNode,                              
                                                                               string title,
-                                                                              string appliesTo)
+                                                                              string? appliesTo)
         {
-            ComponentDefinition result = null;
+            ComponentDefinition? result = null;
 
             if(currentNode.AppliesTo == appliesTo)
             {
