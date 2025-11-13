@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using SpecIFicator.Framework.PluginManagement.DataModels;
+using SpecIFicator.Plugins.BlazorComponents;
 using System.Diagnostics;
 using System.Reflection;
 
@@ -16,6 +17,8 @@ namespace SpecIFicator.Framework.PluginManagement
         private static string _basePath = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "/SpecIFicator/plugins";
 #endif
 
+        // for early loading the UI library
+        private static readonly Type _PluginUILib = typeof(ResourceEditor);
 
         public static string PluginPath
         {
@@ -139,13 +142,31 @@ namespace SpecIFicator.Framework.PluginManagement
             //}
         }
 
-        public static Type GetType(string typeName)
+        public static Type? GetType(string typeName)
         {
-            Type result = null;
+            Type? result = null;
 
             foreach (KeyValuePair<PluginManifest, List<Assembly>> plugin in _pluginCache)
             {
                 foreach (Assembly assembly in plugin.Value)
+                {
+                    Type[] types = assembly.GetTypes();
+
+                    foreach (Type type in assembly.GetTypes())
+                    {
+                        if (type.FullName == typeName)
+                        {
+
+                            result = type;
+                        }
+                    }
+                }
+            }
+
+            if(result == null)
+            {
+                // Search this type in the complete AppDomain, if not found in an Plugin 
+                foreach (Assembly assembly in AppDomain.CurrentDomain.GetAssemblies())
                 {
                     foreach (Type type in assembly.GetTypes())
                     {
